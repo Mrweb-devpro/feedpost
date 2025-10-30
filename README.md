@@ -1,17 +1,17 @@
-<!-- AppVoice README.md -->
+<!-- FeedPost README.md -->
 
 <p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZDBnY3lsNzB1MzhrdmtjOTQycG52MjNvYzBmbGd5cWtsNGI3Y3BuciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/a0h7sAqON67nO/giphy.gif" width="100" alt="AppVoice Logo">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN3Z2Znh0cGc1ZmIzZXE2ZXV2ZjE1OGplYWQ3NGZ1N3ZucmQ3Y2k2eCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VbnUQpnihPSIgIXuZv/giphy.gif" width="100" alt="FeedPost Logo">
 </p>
 
-<h1 align="center">🎙️ AppVoice — Next-Gen Feedback Platform</h1>
+<h1 align="center">📢 FeedPost — Where Users Speak & Developers Listen</h1>
 
 <p align="center">
-  <b>Where users speak, and developers listen.</b>  
+  <b>Give users a voice. Empower developers. Build better apps together.</b>
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/version-1.0.0-blue.svg?style=for-the-badge" alt="version">
+  <img src="https://img.shields.io/badge/version-1.0.0-blue?style=for-the-badge" alt="version">
   <img src="https://img.shields.io/badge/built%20with-React%20%2B%20TypeScript-61DAFB.svg?style=for-the-badge" alt="stack">
   <img src="https://img.shields.io/badge/license-MIT-green.svg?style=for-the-badge" alt="license">
   <img src="https://img.shields.io/badge/author-David%20Nwokedike-orange.svg?style=for-the-badge" alt="author">
@@ -21,50 +21,49 @@
 
 ## 🌟 **Overview**
 
-**AppVoice** is a social platform that bridges the gap between **app users** and **developers**.  
-It helps users share feedback, and lets developers **respond, act, and measure impact** — all in one place.
+**FeedPost** is a modern feedback and discussion platform that connects **users** and **developers** in real time.  
+It enables users to post feedback, report bugs, and share ideas — while developers can respond, categorize, and track insights efficiently.
 
 <p align="center">
-  <img src="https://media.giphy.com/media/l3vR3z8j9E8d7Z5rC/giphy.gif" width="600" alt="Feedback Animation">
+  <img src="https://media.giphy.com/media/3o7TKVv8m9I7Q3i2l6/giphy.gif" width="600" alt="FeedPost Animation">
 </p>
 
 ---
 
-## 🚀 **Core Differentiators**
+## 🚀 **Core Features**
 
-### 🎯 Developer Response System
+### 🎯 Developer Interaction System
 
-- Verified developer accounts with official badges.
-- Status updates like `Under Review`, `In Development`, `Shipped`, and `Won’t Fix`.
-- Users get notified when their feedback gets a developer response.
+- Verified developer profiles.
+- Status indicators like `Under Review`, `In Progress`, `Implemented`.
+- Smart notifications when a developer responds to your feedback.
 
-### 🏆 Impact Score & Influence
+### 💬 Smart Feedback & Post Threads
 
-- Earn **Impact Points** when your ideas get implemented.
-- Leaderboard for top “Feature Hunters”.
-- “Implemented” tags on posts that led to real updates.
+- Users can post feedback, bugs, or ideas.
+- Comments and replies encourage collaboration.
+- AI-powered suggestions for similar posts.
 
-### 🤖 Smart Feedback Clustering
+### 🧠 AI-Powered Clustering
 
-- AI auto-groups similar feedback.
-- Displays: “234 people reported similar issues.”
-- Reduces duplicate posts, saves time, and reveals trends.
+- Automatically groups similar feedback to reduce duplicates.
+- Displays “45 people reported this too”.
+- Helps developers see what matters most.
 
 ---
 
-## 📊 **Analytics & Tracking**
+## 📊 **Analytics & Insights**
 
-### 🧭 Version-Specific Tracking
+### 🧭 Version Tracking
 
-- Attach feedback to version numbers (e.g. `v2.3.4`).
-- Auto-tagging for fixed bugs.
-- Track app improvement history.
+- Attach posts and bugs to app versions (e.g. `v2.3.4`).
+- Helps teams understand when issues appear or are fixed.
 
-### 💬 Sentiment Analytics Dashboard
+### 💡 Sentiment Insights
 
-- Real-time sentiment meter.
-- Category breakdowns (UX, Performance, Features).
-- Track overall app health score over time.
+- AI sentiment analysis dashboard.
+- See community sentiment over time.
+- Filter feedback by tone (Positive, Neutral, Negative).
 
 <p align="center">
   <img src="https://media.giphy.com/media/xT9IgzoKnwFNmISR8I/giphy.gif" width="600" alt="Analytics Animation">
@@ -72,72 +71,59 @@ It helps users share feedback, and lets developers **respond, act, and measure i
 
 ---
 
-## 🎨 **Why AppVoice Feels Better Than Reddit**
+## 🎨 **Why FeedPost Feels Better**
 
-- 🧠 AI auto-tags posts & reduces clutter.
-- 🖼️ Visual feedback tools (screenshots, recordings, mockups).
-- 🔔 Smart notifications (only for relevant updates).
-- 🗂️ Clean and structured categorization.
-- 🧩 Transparent developer roadmaps.
-
----
-
-## 💡 **Monetization That Adds Value**
-
-| For Users               | For Developers                   |
-| ----------------------- | -------------------------------- |
-| Personal impact reports | Business Intelligence dashboards |
-| Premium filters         | Competitive sentiment analysis   |
-| Influence tracking      | Public roadmap insights          |
-| Verified reviews        | Cross-app comparison tools       |
+- ✨ Clean and distraction-free UI.
+- ⚙️ AI tagging & filtering for quick navigation.
+- 📸 Visual feedback (screenshots, recordings).
+- 🔔 Smart, context-aware notifications.
+- 🧩 Structured discussions, not noisy comment chains.
 
 ---
 
-## 🔥 **Most Impactful Features to Build First**
+## 💰 **Value & Monetization**
 
-1. **Developer Response System** — The core engagement driver.
-2. **Impact Score** — Proof of influence for users.
-3. **Smart Feedback Clustering** — Reduces duplicate clutter.
-4. **Version Tracking** — Developers love this.
-5. **Sentiment Dashboard** — Visual, powerful, and addictive.
-
----
-
-## 🧠 **Future Plans**
-
-- 🧵 Threaded feedback collections (“Privacy Mega-Thread”)
-- 💬 AMAs with verified developers
-- 🧍‍♂️ Beta tester hub
-- 🏅 Monthly feedback challenges
-- 📍 Regional/local feedback insights
+| For Users                | For Developers                    |
+| ------------------------ | --------------------------------- |
+| Influence reports        | Feedback analytics dashboards     |
+| Personal insights        | Public sentiment & trend tracking |
+| Verified impact tags     | App improvement visibility        |
+| Priority feedback status | Smart clustering for planning     |
 
 ---
 
-## 🧑‍💻 **Tech Stack**
+## 🔥 **MVP Features to Build First**
+
+1. **Developer Interaction System** — Direct connection between users & devs.
+2. **Smart Feedback Clustering** — Group similar posts intelligently.
+3. **Version Tagging** — Associate feedback with app versions.
+4. **Sentiment Dashboard** — Visualize overall mood and reactions.
+5. **User Influence Metrics** — Highlight users whose ideas get adopted.
+
+---
+
+## 🧩 **Tech Stack**
 
 - **Frontend:** React + TypeScript + TailwindCSS
 - **Backend:** Firebase / Node.js (planned)
-- **AI:** OpenAI + Natural Language Processing (for clustering)
-- **Analytics:** Recharts / Chart.js
-- **Hosting:** Netlify / Vercel
+- **AI:** OpenAI NLP for feedback clustering & sentiment analysis
+- **Charts:** Recharts / Chart.js
+- **Hosting:** Vercel / Netlify
 
 ---
 
-## 🤝 **Contributing**
-
-We’re open to contributions!  
-Fork the repo, open a PR, and help make **AppVoice** even more powerful.
+## ⚙️ **Getting Started**
 
 ```bash
-# Clone the repo
-git clone https://github.com/davidnwokedike/appvoice.git
+# Clone the repository
+git clone https://github.com/davidnwokedike/feedpost.git
 
-# Navigate into the folder
-cd appvoice
+# Navigate to the project
+cd feedpost
 
 # Install dependencies
 npm install
 
-# Run locally
+# Run the app
 npm run dev
 ```

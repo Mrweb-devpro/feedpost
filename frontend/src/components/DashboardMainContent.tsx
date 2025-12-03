@@ -1,12 +1,5 @@
 import { feedbackPosts } from "@/fakeData";
-import {
-  Clock,
-  Flame,
-  MessageSquare,
-  ThumbsDown,
-  ThumbsUp,
-  TrendingUp,
-} from "lucide-react";
+import { MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 
 export default function DashboardMainContent({
@@ -78,80 +71,7 @@ export default function DashboardMainContent({
   return (
     <main className="flex-1">
       {/* Filter Bar */}
-      <div className="bg-white rounded-lg p-4 mb-4 border border-gray-200">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => setSortBy("hot")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-colors ${
-              sortBy === "hot"
-                ? "bg-blue-100 text-blue-700"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
-          >
-            <Flame size={18} />
-            Hot
-          </button>
-          <button
-            onClick={() => setSortBy("new")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-colors ${
-              sortBy === "new"
-                ? "bg-blue-100 text-blue-700"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
-          >
-            <Clock size={18} />
-            New
-          </button>
-          <button
-            onClick={() => setSortBy("top")}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-colors ${
-              sortBy === "top"
-                ? "bg-blue-100 text-blue-700"
-                : "text-gray-600 hover:bg-gray-100"
-            }`}
-          >
-            <TrendingUp size={18} />
-            Top
-          </button>
-
-          <div className="ml-auto flex gap-2">
-            <button
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                feedbackType === "all"
-                  ? "bg-gray-200 text-gray-900"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              All
-            </button>
-            <button
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                feedbackType === "like"
-                  ? "bg-green-100 text-green-700"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              👍 Likes
-            </button>
-            <button
-              className={`px-4 py-2 rounded-lg font-semibold transition-colors ${
-                feedbackType === "dislike"
-                  ? "bg-red-100 text-red-700"
-                  : "text-gray-600 hover:bg-gray-100"
-              }`}
-            >
-              👎 Dislikes
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Feedback Posts */}
-      <div>
-        {feedbackPosts.map((post) => (
-          <FeedbackCard key={post.id} post={post} />
-        ))}
-      </div>
+      Main
     </main>
   );
 }

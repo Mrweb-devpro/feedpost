@@ -32,9 +32,9 @@ export default function SidebarLink({
   };
 
   const baseClasses =
-    "flex items-center justify-between w-full px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-sky-700/50";
+    "flex items-center justify-between w-full px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-blue-700/50";
   const activeClasses = isActive
-    ? "bg-sky-600 text-white hover:bg-sky-700"
+    ? "bg-blue-600 text-white hover:bg-blue-700"
     : "text-slate-500 hover:text-white";
 
   if (hasSubLinks) {

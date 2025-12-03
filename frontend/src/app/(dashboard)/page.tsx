@@ -96,14 +96,14 @@ const AppVoice = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="h-full">
       {/* Header */}
 
       <DashboardHeader setShowCreateModal={setShowCreateModal} />
-      <div className="max-w-7xl mx-auto px-4 py-6 flex gap-6">
+      <div className="max-w-7xl mx-auto flex h-full">
         {/* Sidebar */}
-
         <DashboardSidebar />
+
         {/* Main Content */}
         <DashboardMainContent
           setSortBy={setSortBy}

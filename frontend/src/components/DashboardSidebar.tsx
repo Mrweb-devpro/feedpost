@@ -1,13 +1,4 @@
-import {
-  AppWindow,
-  Bell,
-  Home,
-  LayoutGrid,
-  Lock,
-  Settings,
-  User,
-} from "lucide-react";
-import Link from "next/link";
+import { AppWindow, Bell, Home, Lock, Settings, User } from "lucide-react";
 import SidebarLink from "./SidebarLink";
 import { useState } from "react";
 import WhatsappIcon from "./icons/WhatsappIcon";
@@ -16,15 +7,13 @@ import InstagramIcon from "./icons/InstagramIcon";
 import ThreadsIcon from "./icons/ThreadsIcon";
 import TwitterXIcon from "./icons/TwitterXIcon";
 import { MdPayment } from "react-icons/md";
-import { BiNotification } from "react-icons/bi";
 
 export default function DashboardSidebar() {
   const [activeLink, setActiveLink] = useState("dashboard");
 
   return (
-    <div className="absolute md:relative w-full h-full bg-black/45 backdrop-blur-xs text-stone-600">
-      <aside className=" w-80 space-y-4 bg-white h-full">
-        {/* <button>{"<"}</button> */}
+    <div className="absolute md:relative w-full h-full bg-black/45 md:bg-transparent md:w-fit backdrop-blur-xs text-stone-600">
+      <aside className=" w-80 space-y-4 h-full flex flex-col justify-between">
         <div className="bg-white rounded-lg p-4 border border-gray-200">
           <div className="flex flex-col">
             <nav className="space-y-2">
@@ -100,13 +89,13 @@ export default function DashboardSidebar() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-sky-700  to-sky-400 rounded-lg p-6 text-white">
+        <div className="bg-gradient-to-br from-blue-700  to-blue-600 rounded-lg p-6 text-white">
           <h3 className="font-bold text-lg mb-2">Premium Features</h3>
           <p className="text-sm text-sky-100 mb-4">
             Get exclusive badges, ad-free experience, and more visibility for
             your feedback!
           </p>
-          <button className="w-full bg-white text-sky-500 font-semibold py-2 rounded-lg hover:bg-sky-50 transition-colors">
+          <button className="w-full bg-white text-blue-500 font-semibold py-2 rounded-lg hover:bg-sky-50 transition-colors">
             Upgrade Now
           </button>
         </div>

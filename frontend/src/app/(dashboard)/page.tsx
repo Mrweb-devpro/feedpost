@@ -6,7 +6,7 @@ import DashboardHeader from "@/components/DashboardHeader";
 import DashboardSidebar from "@/components/DashboardSidebar";
 import DashboardMainContent from "@/components/DashboardMainContent";
 
-const AppVoice = () => {
+export default function AppLayout() {
   const [selectedApp, setSelectedApp] = useState(null);
   const [sortBy, setSortBy] = useState("hot");
   const [feedbackType, setFeedbackType] = useState("all");
@@ -96,13 +96,13 @@ const AppVoice = () => {
   );
 
   return (
-    <div className="h-full">
+    <>
       {/* Header */}
 
       <DashboardHeader setShowCreateModal={setShowCreateModal} />
-      <div className="max-w-7xl mx-auto flex h-full">
-        {/* Sidebar */}
+      <div className="max-w-7xl mx-auto flex h-full overflow-hidden">
         <DashboardSidebar />
+        {/* Sidebar */}
 
         {/* Main Content */}
         <DashboardMainContent
@@ -114,8 +114,6 @@ const AppVoice = () => {
 
       {/* Create Modal */}
       {showCreateModal && <CreateFeedbackModal />}
-    </div>
+    </>
   );
-};
-
-export default AppVoice;
+}

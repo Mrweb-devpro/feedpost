@@ -68,10 +68,5 @@ export default function DashboardMainContent({
       </div>
     </div>
   );
-  return (
-    <main className="flex-1">
-      {/* Filter Bar */}
-      Main
-    </main>
-  );
+  return <main className="flex-1">Main</main>;
 }

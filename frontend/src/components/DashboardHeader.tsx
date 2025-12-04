@@ -23,7 +23,7 @@ export default function DashboardHeader({
             <input
               type="text"
               placeholder="Search apps or feedback..."
-              className="w-full pl-10 pr-4 py-1.5 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent text-stone-700 text-sm"
+              className="w-full pl-10 pr-4 py-1.5 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent text-stone-700 text-sm outline-none"
             />
           </div>
         </div>

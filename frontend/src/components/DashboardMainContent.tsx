@@ -125,15 +125,16 @@ export default function DashboardMainContent({
             </p>
             <br />
             <div className="flex items-center justify-between">
-              <span className="flex items-center gap-2 text-blue-500">
-                <Link href="/apps/facebook" className="flex items-center">
-                  <FacebookIcon size={26} />
-                </Link>
+              <Link
+                href="/apps/facebook"
+                className="flex items-center gap-2 text-blue-500"
+              >
+                <FacebookIcon size={26} />
 
                 <p className="text-sm font-medium ">Facebook</p>
 
                 <span className="text-sm text-blue-500">•</span>
-              </span>
+              </Link>
 
               <span className="flex gap-2 items-center text-stone-600 ">
                 <span className="bg-blue-100/40 p-2 rounded-2xl flex items-center gap-1">

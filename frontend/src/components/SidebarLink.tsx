@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
 
 interface SubLink {
@@ -9,6 +9,8 @@ interface SubLink {
 
 interface SidebarLinkProps {
   href?: string;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: Dispatch<SetStateAction<boolean>>;
   icon?: React.ReactNode;
   label: string;
   subLinks?: SubLink[];
@@ -17,6 +19,8 @@ interface SidebarLinkProps {
 
 export default function SidebarLink({
   href,
+  isSidebarOpen,
+  setIsSidebarOpen,
   icon,
   label,
   subLinks,
@@ -27,6 +31,7 @@ export default function SidebarLink({
 
   const handleToggle = () => {
     if (hasSubLinks) {
+      if (!isSidebarOpen && !isOpen) setIsSidebarOpen(true);
       setIsOpen(!isOpen);
     }
   };
@@ -46,7 +51,7 @@ export default function SidebarLink({
         >
           <div className="flex items-center gap-3">
             {icon && <span className="text-lg">{icon}</span>}
-            <span>{label}</span>
+            {isSidebarOpen && <span>{label}</span>}
           </div>
           {isOpen ? (
             <ChevronDown className="w-4 h-4 transition-transform" />
@@ -79,7 +84,7 @@ export default function SidebarLink({
     <a href={href} className={`${baseClasses} ${activeClasses}`}>
       <div className="flex items-center gap-3">
         {icon && <span className="text-lg">{icon}</span>}
-        <span>{label}</span>
+        {isSidebarOpen && <span>{label}</span>}
       </div>
     </a>
   );

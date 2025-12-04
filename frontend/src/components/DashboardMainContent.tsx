@@ -1,6 +1,18 @@
 import { feedbackPosts } from "@/fakeData";
-import { MessageSquare, ThumbsDown, ThumbsUp } from "lucide-react";
+import {
+  ArrowBigDown,
+  ArrowBigUp,
+  MessageCircle,
+  MessageSquare,
+  MoreHorizontal,
+  ThumbsDown,
+  ThumbsUp,
+} from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
+import FacebookIcon from "./icons/FacebookIcon";
+import Link from "next/link";
+import { BiCommentDots, BiUpArrow } from "react-icons/bi";
+import Image from "next/image";
 
 export default function DashboardMainContent({
   setSortBy,
@@ -68,5 +80,92 @@ export default function DashboardMainContent({
       </div>
     </div>
   );
-  return <main className="flex-1">Main</main>;
+  return (
+    <main className="h-full w-full overflow-y-auto p-6">
+      <section>
+        <article>
+          <hr className="border-t border-gray-200" />
+          <div className="h-2" />
+
+          <blockquote className="hover:bg-[#e5ebee]/60 rounded-2xl p-1 py-0.5 ">
+            <div className="flex justify-between">
+              <span className="flex items-center gap-5">
+                <span className="flex items-center gap-2">
+                  <Image
+                    src="https://picsum.photos/300/300"
+                    width={230}
+                    height={230}
+                    className="w-6 rounded-full"
+                    alt=""
+                  />
+                  <p className="text-stone-600 text-sm font-semibold">
+                    r/jane Mary
+                  </p>
+                </span>
+                <p className="text-sm text-stone-500">2 days ago</p>
+              </span>
+              <button className="text-stone-500 hover:bg-blue-50/70 p-2 hover:text-blue-500">
+                <MoreHorizontal />
+              </button>
+            </div>
+            <br />
+            <p className="text-stone-900 font-semibold space">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsum,
+              in. Repellat, voluptatum laudantium et cum numquam est odit ullam
+              repudiandae ipsam similique ducimus obcaecati, eligendi minus
+              tenetur sed quibusdam nesciunt asperiores officiis voluptate
+              maiores debitis. Earum provident cumque, reprehenderit sit nisi
+              sunt aperiam soluta placeat unde doloremque impedit deserunt
+              obcaecati autem asperiores mollitia similique veniam error,
+              incidunt eius sint, aliquam modi optio id. Optio, porro ratione
+              quod amet velit veritatis expedita veniam impedit blanditiis id,
+              quis similique nulla incidunt reprehenderit nesciunt beatae fugiat
+              dolores voluptatem. Atque quibusdam, rem ad sit debitis veritatis,
+              repudiandae ex omnis fuga praesentium tenetur soluta at!
+            </p>
+            <br />
+            <div className="flex items-center justify-between">
+              <span className="flex items-center gap-2 text-blue-500">
+                <Link href="/apps/facebook" className="flex items-center">
+                  <FacebookIcon size={26} />
+                </Link>
+
+                <p className="text-sm font-medium ">Facebook</p>
+
+                <span className="text-sm text-blue-500">•</span>
+              </span>
+
+              <span className="flex gap-2 items-center text-stone-600 ">
+                <span className="bg-blue-100/40 p-2 rounded-2xl flex items-center gap-1">
+                  <button
+                    type="button"
+                    className="p-1 hover:bg-blue-200/40 rounded-2xl hover:text-blue-600"
+                  >
+                    <ArrowBigUp />
+                  </button>
+                  23k
+                  <button
+                    type="button"
+                    className="p-1 hover:bg-blue-200/40 rounded-2xl hover:text-blue-600"
+                  >
+                    <ArrowBigDown />
+                  </button>
+                </span>
+                <button
+                  type="button"
+                  className="bg-blue-100/40 flex items-center gap-2 justify-center border border-stone-400/20  text-stone-600 px-4 py-3 rounded-2xl "
+                >
+                  <MessageCircle />
+                  23
+                </button>
+              </span>
+            </div>
+            <br />
+          </blockquote>
+          <div className="h-2" />
+          <hr className="border-t border-gray-200" />
+        </article>
+      </section>
+    </main>
+  );
 }

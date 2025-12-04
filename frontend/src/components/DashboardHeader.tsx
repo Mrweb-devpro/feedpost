@@ -8,12 +8,8 @@ export default function DashboardHeader({
   setShowCreateModal: Dispatch<SetStateAction<boolean>>;
 }) {
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-40 py-2">
       <div className="max-w-7xl mx-auto px-4 flex items-center gap-4">
-        <div className="flex items-center gap-2">
-          <Logo width={130} />
-        </div>
-
         <div className="flex-1 max-w-96">
           <div className="relative">
             <Search
@@ -31,7 +27,7 @@ export default function DashboardHeader({
         <div className="flex items-center ml-auto">
           <button
             onClick={() => setShowCreateModal(true)}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full font-semibold hover:bg-blue-700 transition-colors text-sm"
+            className="flex items-center gap-2 px-4 py-2 text-stone-600 rounded-full font-semibold hover:bg-blue-700 hover:text-white transition-colors text-sm"
           >
             <Plus size={20} />
             Create

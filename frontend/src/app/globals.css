@@ -27,3 +27,7 @@
 button:not(:disabled):hover {
   cursor: pointer !important;
 } */
+
+body * button:hover {
+  cursor: pointer;
+}

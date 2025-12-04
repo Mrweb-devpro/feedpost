@@ -37,8 +37,8 @@ export default function WhatsappIcon({ size = 23 }: { size?: number }) {
             y2="28"
             gradientUnits="userSpaceOnUse"
           >
-            <stop stop-color="#5BD066" />
-            <stop offset="1" stop-color="#27B43E" />
+            <stop stopColor="#5BD066" />
+            <stop offset="1" stopColor="#27B43E" />
           </linearGradient>
         </defs>
       </svg>

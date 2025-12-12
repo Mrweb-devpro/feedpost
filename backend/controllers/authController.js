@@ -65,7 +65,6 @@ module.exports.signup = async function (req, res) {
   try {
     const signupData = SignupSchema.parse(req.body);
     const user = await prisma.user.create({ data: signupData });
-
     res.status(200).json({ success: true, user });
   } catch (error) {
     console.log(error.message);

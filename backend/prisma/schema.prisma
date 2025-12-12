@@ -22,4 +22,6 @@ model User {
   accountType String
   interests   String[]
   terms   Boolean
+
+  @@unique([email])
 }

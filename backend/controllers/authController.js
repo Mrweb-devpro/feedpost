@@ -62,11 +62,9 @@ const SignupSchema = z.object({
 });
 
 module.exports.signup = async function (req, res) {
-  //   const { email, username, password, accountType, interests, terms } = req.body;
   try {
     const signupData = SignupSchema.parse(req.body);
     const user = await prisma.user.create({ data: signupData });
-    console.log(user);
 
     res.status(200).json({ success: true, user });
   } catch (error) {

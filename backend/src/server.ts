@@ -1,5 +1,8 @@
 import express from "express";
 
+//Import routes
+import authRoutes from "./modules/auth/auth.routes";
+
 const app = express();
 
 //--  middleware
@@ -7,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //-- Routes
-// app.use("/api/auth", authRoute);
+app.use("/api/auth", authRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hi this is the api base endpoint for FEEDPOST");

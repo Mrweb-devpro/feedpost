@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AuthUser {
+  id         String       @id @default(uuid())
+  email      String       @unique
+  password   String?
+  provider   AuthProvider @default(LOCAL)
+  providerId String?
+  role       Role         @default(USER)
+  terms      Boolean      @default(false)
+  isVerified Boolean      @default(false)
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+
+  user User?
+}
+
+// Your User model (example — adjust as needed)
+model User {
+  id          String   @id @default(uuid()) @db.Uuid
+  authUserId  String   @unique //foreign key(holding the unique id to another model)
+  username    String   @unique
+  firstname   String?
+  lastname    String?
+  fullName    String?
+  avatarUrl   String?  @default("https://image2url.com/r2/bucket1/images/1766536812235-7f586613-c04c-460b-95a5-5c3a1eadd437.svg")
+  bio         String?
+  location    String?
+  karmaPoints Int      @default(0)
+  impactScore Int      @default(0)
+  interests   String[] @default([]) // Simple string array for interests
+  isPremium   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @default(now()) @updatedAt
+
+  authUser AuthUser @relation(fields: [authUserId], references: [id], onDelete: Cascade)
+}
+
+// Define your enums
+enum AuthProvider {
+  LOCAL
+  GOOGLE
+  GITHUB
+  FACEBOOK
+}
+
+enum Interest {
+  SOCIAL_MEDIA
+  MESSAGING
+  ENTERTAINMENT
+  PRODUCTIVITY
+  FINANCE
+  HEALTH
+}
+
+enum Role {
+  USER
+  ADMIN
+}

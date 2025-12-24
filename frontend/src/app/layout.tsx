@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "FeedPost",
-  description: "Drop you compliate",
+  title: {
+    default: "FeedPost",
+    template: "%s | Feedpost",
+  },
+  description: "Login to get access and communicate wiht other users online",
 };
 
 export default function RootLayout({
@@ -25,7 +28,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-white h-screen overflow-hidden`}
+        className={`
+          ${geistSans.variable} ${geistMono.variable} antialiased bg-white h-screen overflow-hidden`}
       >
         {children}
       </body>

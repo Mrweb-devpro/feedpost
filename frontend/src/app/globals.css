@@ -31,3 +31,7 @@ button:not(:disabled):hover {
 body * button:hover {
   cursor: pointer;
 }
+
+body * button:disabled:hover {
+  cursor: not-allowed;
+}

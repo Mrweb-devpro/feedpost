@@ -1,5 +1,7 @@
 "use client";
 import AuthImage from "@/components/AuthImage";
+import GithubAuthButton from "@/components/buttons/GithubAuthButton";
+import GoogleAuthButton from "@/components/buttons/GoogleAuthButton";
 import AuthInput from "@/components/inputs/AuthInput";
 import Logo from "@/components/Logo";
 import { useSignupData } from "@/hooks/useSignupData";
@@ -10,6 +12,7 @@ import {
   Hash,
   HeartPulse,
   LucideProps,
+  Mail,
   MessageCircleWarning,
   Music,
   Rocket,
@@ -30,7 +33,7 @@ export default function SignupPage() {
     useSignupData(() => {
       setPage(0);
     });
-  const isMaxPageIndx = page === 1;
+  const isMaxPageIndx = page === 2;
 
   const handleTogglePage = (lv: 1 | -1) => {
     if (page === 0 && lv === -1) return;
@@ -60,13 +63,34 @@ export default function SignupPage() {
       <div className="md:block hidden">
         <AuthImage />
       </div>
-      <form className="space-y-5 mx-auto w-full" onSubmit={handleSubmit}>
+      <form
+        className="gap-5 mx-auto w-full flex flex-col"
+        onSubmit={handleSubmit}
+      >
         <Logo />
         <span className="md:hidden block">
           <AuthImage />
         </span>
         {
           [
+            <>
+              <h1 className="text-lg/tight font-medium italic text-stone-500/70 text-center mb-5">
+                Please Select your prefered method of signing in
+              </h1>
+              <span className="flex gap-4 items-center self-center">
+                <GoogleAuthButton />
+                <i className="text-stone-400">OR</i>
+                <GithubAuthButton />
+              </span>
+              <button
+                type="button"
+                className="border flex  items-center gap-2 px-4 py-2 rounded-xl border-stone-400/50 bg-blue-600 text-white w-fit self-center"
+                onClick={() => handleTogglePage(1)}
+              >
+                <Mail size={29} />
+                Email & Password
+              </button>
+            </>,
             <>
               <h1 className="text-lg/tight font-semibold italic text-stone-600/70">
                 {"Let's"} sign you up for your journey...
@@ -156,31 +180,32 @@ export default function SignupPage() {
           ][page]
         }
 
-        <i className="text-red-500 text-2xl">{}</i>
-        <span className="flex gap-2 w-full justify-between flex-wrap text-base">
-          <button
-            type="button"
-            className="p-2 text-stone-600 flex items-center gap-3 py-4   rounded-2xl px-5 disabled:opacity-40 hover:bg-blue-100 hover:text-stone-800"
-            disabled={page === 0}
-            onClick={() => handleTogglePage(-1)}
-          >
-            <BiLeftArrow /> Back
-          </button>
-          <button
-            type="submit"
-            className="p-2 text-white bg-blue-700 flex py-4  items-center gap-3  rounded-2xl px-5 "
-          >
-            {isMaxPageIndx ? (
-              <>
-                <Check />
-                Complete Signup
-              </>
-            ) : (
-              "Next"
-            )}
-            {isMaxPageIndx || <BiRightArrow />}
-          </button>
-        </span>
+        {page === 0 || (
+          <span className="flex gap-2 w-full justify-between flex-wrap text-base">
+            <button
+              type="button"
+              className="p-2 text-stone-600 flex items-center gap-3 py-4   rounded-2xl px-5 disabled:opacity-40 hover:bg-blue-100 hover:text-stone-800"
+              disabled={page === 0}
+              onClick={() => handleTogglePage(-1)}
+            >
+              <BiLeftArrow /> Back
+            </button>
+            <button
+              type="submit"
+              className="p-2 text-white bg-blue-700 flex py-4  items-center gap-3  rounded-2xl px-5 "
+            >
+              {isMaxPageIndx ? (
+                <>
+                  <Check />
+                  Complete Signup
+                </>
+              ) : (
+                "Next"
+              )}
+              {isMaxPageIndx || <BiRightArrow />}
+            </button>
+          </span>
+        )}
       </form>
     </section>
   );

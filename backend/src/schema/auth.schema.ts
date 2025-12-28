@@ -52,3 +52,12 @@ export const SignupSchema = z.object({
 });
 
 export type SignupDataType = z.infer<typeof SignupSchema>;
+
+export const LoginSchema = z.object({
+  email: z
+    .string("You provided an invalid Email")
+    .email("You provided an invalid Email"),
+  password: z.string("Password is required").min(6, "Invalid Credentials"),
+});
+
+export type LoginDataType = z.infer<typeof LoginSchema>;

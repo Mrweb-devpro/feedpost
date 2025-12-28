@@ -8,16 +8,17 @@ datasource db {
 }
 
 model AuthUser {
-  id         String       @id @default(uuid())
-  email      String       @unique
-  password   String?
-  provider   AuthProvider @default(LOCAL)
-  providerId String?
-  role       Role         @default(USER)
-  terms      Boolean      @default(false)
-  isVerified Boolean      @default(false)
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
+  id           String       @id @default(uuid())
+  email        String       @unique
+  password     String?
+  provider     AuthProvider @default(LOCAL)
+  providerId   String?
+  role         Role         @default(USER)
+  terms        Boolean      @default(false)
+  isVerified   Boolean      @default(false)
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+  refreshToken String       @default("")
 
   user User?
 }

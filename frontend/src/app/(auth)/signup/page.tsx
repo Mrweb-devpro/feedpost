@@ -38,7 +38,7 @@ export default function SignupPage() {
     setPage((prev) => prev + lv);
   };
   const interestFields = [
-    { value: "Socia Media", Icon: Hash },
+    { value: "Social Media", Icon: Hash },
     { value: "Messaging", Icon: MessageCircleWarning },
     { value: "Health", Icon: HeartPulse },
     { value: "Finance", Icon: HandCoins },

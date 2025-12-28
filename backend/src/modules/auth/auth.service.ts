@@ -22,11 +22,14 @@ export class authService {
     ]);
 
     if (emailExists) {
-      throw new AppError(409, "User with this email already exists");
+      throw new AppError(
+        409,
+        "This email is already registered by another user"
+      );
     }
 
     if (usernameExists) {
-      throw new AppError(409, "User with this username already exists");
+      throw new AppError(409, "This username is already taken");
     }
 
     //  hash the password

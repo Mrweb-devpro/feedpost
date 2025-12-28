@@ -1,10 +1,11 @@
 //
 "use client";
 import { signupAction } from "@/actions/authActions";
-import { BACKEND_URL } from "@/config/envConfig";
+
 import { SignupPayloadType } from "@/types/AuthTypes";
 import { useMutation } from "@tanstack/react-query";
 import { ChangeEvent, useState } from "react";
+import Swal from "sweetalert2";
 
 const initialData: SignupPayloadType = {
   firstname: "",
@@ -20,13 +21,18 @@ const initialData: SignupPayloadType = {
 export function useSignupData() {
   const [signupData, setSignupData] = useState<SignupPayloadType>(initialData);
 
-  const { mutate } = useMutation({
+  const { mutate, error, isPending } = useMutation({
     mutationFn: signupAction,
     onSuccess(data) {
       console.log(data);
     },
-    onError(error) {
-      console.log(error);
+    onError(error: { message: string }) {
+      Swal.fire({
+        icon: "error",
+        title: "Signup failed",
+        text: error.message,
+        confirmButtonColor: "oklch(54.6% 0.245 262.881)",
+      });
     },
   });
 
@@ -78,5 +84,7 @@ export function useSignupData() {
     mutateSignup: mutate,
     handleValueChange,
     handleInterestChange,
+    error,
+    isPending,
   };
 }

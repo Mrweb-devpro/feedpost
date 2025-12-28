@@ -24,8 +24,14 @@ import {
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 export default function SignupPage() {
-  const { mutateSignup, signupData, handleValueChange, handleInterestChange } =
-    useSignupData();
+  const {
+    mutateSignup,
+    signupData,
+    handleValueChange,
+    handleInterestChange,
+    error,
+    isPending,
+  } = useSignupData();
   const [page, setPage] = useState(0);
   const isMaxPageIndx = page === 1;
 
@@ -144,6 +150,8 @@ export default function SignupPage() {
             </>,
           ][page]
         }
+
+        <i className="text-red-500 text-2xl">{}</i>
         <span className="flex gap-2 w-full justify-between">
           <button
             type="button"

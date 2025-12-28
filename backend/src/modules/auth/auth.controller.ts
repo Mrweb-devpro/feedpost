@@ -30,16 +30,15 @@ export class authControllers {
       res.status(201).json(response);
     } catch (error) {
       if (error instanceof AppError) {
-        return res
+        res
           .status(error.statusCode)
           .json({ success: false, message: error.message });
-      }
-
-      res.status(500).json({
-        success: false,
-        error,
-        message: "Something went wrong on the server",
-      });
+      } else
+        res.status(500).json({
+          success: false,
+          error,
+          message: "Something went wrong. Please try again.",
+        });
     }
   });
 

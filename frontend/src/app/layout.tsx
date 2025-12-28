@@ -30,7 +30,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`
-          ${geistSans.variable} ${geistMono.variable} antialiased bg-white h-screen overflow-hidden`}
+          ${geistSans.variable} ${geistMono.variable} antialiased bg-white h-screen overflow-x-hidden overscroll-y-auto`}
       >
         <AppQueryClientProvider>{children}</AppQueryClientProvider>
       </body>

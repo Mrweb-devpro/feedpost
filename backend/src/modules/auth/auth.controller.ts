@@ -1,4 +1,4 @@
-// const { prisma ("../prisma/index");
+import { AppError } from "../../middlewares/errorhandler.middleware";
 import { ApiResponse } from "../../types";
 import { asyncWrapper } from "../../utils/asyncWrappers.util";
 import { authService } from "./auth.service";
@@ -17,17 +17,30 @@ export class authControllers {
 
   //-- signup
   signup = asyncWrapper(async (req, res) => {
-    const body = req.body;
+    try {
+      const body = req.body;
+      const result = await this.authService.signup(body);
 
-    const result = await this.authService.signup(body);
+      const response: ApiResponse = {
+        success: true,
+        message: result.message,
+        data: result,
+      };
 
-    const response: ApiResponse = {
-      success: true,
-      message: result.message,
-      data: result,
-    };
+      res.status(201).json(response);
+    } catch (error) {
+      if (error instanceof AppError) {
+        return res
+          .status(error.statusCode)
+          .json({ success: false, message: error.message });
+      }
 
-    res.status(201).json(response);
+      res.status(500).json({
+        success: false,
+        error,
+        message: "Something went wrong on the server",
+      });
+    }
   });
 
   //--login

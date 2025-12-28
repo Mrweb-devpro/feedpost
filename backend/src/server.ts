@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 
 //Import routes
 import authRoutes from "./modules/auth/auth.routes";
@@ -6,6 +7,12 @@ import authRoutes from "./modules/auth/auth.routes";
 const app = express();
 
 //--  middleware
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 

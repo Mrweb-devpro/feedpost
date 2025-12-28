@@ -58,6 +58,7 @@ enum Interest {
   PRODUCTIVITY
   FINANCE
   HEALTH
+  OTHERS
 }
 
 enum Role {

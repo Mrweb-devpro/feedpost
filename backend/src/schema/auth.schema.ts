@@ -31,6 +31,7 @@ export const SignupSchema = z.object({
         "PRODUCTIVITY",
         "FINANCE",
         "HEALTH",
+        "OTHERS",
       ]),
       {
         error: "Interests field is required",

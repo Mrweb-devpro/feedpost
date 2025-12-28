@@ -14,6 +14,7 @@ import {
   Rocket,
 } from "lucide-react";
 import {
+  FormEvent,
   ForwardRefExoticComponent,
   RefAttributes,
   useId,
@@ -23,7 +24,7 @@ import {
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 export default function SignupPage() {
-  const { updateData, signupData, handleValueChange, handleInterestChange } =
+  const { mutateSignup, signupData, handleValueChange, handleInterestChange } =
     useSignupData();
   const [page, setPage] = useState(0);
   const isMaxPageIndx = page === 1;
@@ -35,7 +36,7 @@ export default function SignupPage() {
     setPage((prev) => prev + lv);
   };
   const interestFields = [
-    { value: "Socia Media", Icon: Hash },
+    { value: "Social Media", Icon: Hash },
     { value: "Messaging", Icon: MessageCircleWarning },
     { value: "Entertainment", Icon: Music },
     { value: "Finance", Icon: HandCoins },
@@ -44,10 +45,17 @@ export default function SignupPage() {
     { value: "Others", Icon: Ellipsis },
   ];
 
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    if (!isMaxPageIndx) return handleTogglePage(1);
+    console.log(signupData);
+
+    mutateSignup(signupData);
+  }
   return (
-    <section className="h-screen p-4 flex items-center gap-10">
+    <section className="min-h-screen items-center p-4 flex gap-10">
       <AuthImage />
-      <form className="space-y-5 mx-auto">
+      <form className="space-y-5 mx-auto" onSubmit={handleSubmit}>
         <Logo />
         <h1 className="text-xl font-semibold italic text-stone-600/70">
           Signing you up for your journey...
@@ -96,30 +104,59 @@ export default function SignupPage() {
               </h2>
 
               <div className="flex flex-wrap  items-center justify-center gap-2">
-                {interestFields.map((interest) => (
+                {interestFields.map((interest, i) => (
                   <InterestButtonField
+                    key={i}
+                    interestsList={signupData.interests}
                     interest={interest.value}
                     Icon={interest.Icon}
                     handleChange={handleInterestChange}
                   />
                 ))}
               </div>
+
+              <label className="flex items-start gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  required
+                  className="mt-1 h-4 w-4 accent-blue-700 cursor-pointer"
+                  {...handleValueChange("terms")}
+                />
+
+                <span className="text-gray-700">
+                  Do you agree with our{" "}
+                  <a
+                    href="#"
+                    className="text-blue-700 underline hover:opacity-80"
+                  >
+                    terms
+                  </a>{" "}
+                  and{" "}
+                  <a
+                    href="#"
+                    className="text-blue-700 underline hover:opacity-80"
+                  >
+                    conditions
+                  </a>
+                  ?
+                </span>
+              </label>
             </>,
           ][page]
         }
         <span className="flex gap-2 w-full justify-between">
           <button
             type="button"
-            className="p-2 text-stone-600 flex items-center gap-3 py-4  text-lg rounded-2xl px-5 disabled:opacity-40 hover:bg-blue-100 text-stone-800"
+            className="p-2 text-stone-600 flex items-center gap-3 py-4  text-lg rounded-2xl px-5 disabled:opacity-40 hover:bg-blue-100 hover:text-stone-800"
             disabled={page === 0}
             onClick={() => handleTogglePage(-1)}
           >
             <BiLeftArrow /> previous
           </button>
           <button
-            type={"button"}
+            type="submit"
             className="p-2 text-white bg-blue-700 flex py-4  items-center gap-3 text-lg rounded-2xl px-5 "
-            onClick={() => handleTogglePage(1)}
+            // onClick={() => handleTogglePage(1)}
           >
             {isMaxPageIndx ? "Complete Signup" : "Next"}
             {isMaxPageIndx || <BiRightArrow />}
@@ -133,12 +170,14 @@ export default function SignupPage() {
 function InterestButtonField({
   Icon,
   interest,
+  interestsList,
   handleChange,
 }: {
   Icon: ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
   >;
   interest: string;
+  interestsList: string[];
   handleChange: (interestValue: string) => void;
 }) {
   const id = useId();
@@ -151,6 +190,9 @@ function InterestButtonField({
         id={interestId}
         name={interestId}
         hidden
+        checked={interestsList.includes(
+          interest.replaceAll(" ", "_").toUpperCase()
+        )}
         className="peer"
         onChange={() => handleChange(interest)}
       />

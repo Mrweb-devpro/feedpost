@@ -4,6 +4,7 @@ import AuthInput from "@/components/inputs/AuthInput";
 import Logo from "@/components/Logo";
 import { useSignupData } from "@/hooks/useSignupData";
 import {
+  Check,
   Ellipsis,
   HandCoins,
   Hash,
@@ -55,11 +56,11 @@ export default function SignupPage() {
     mutateSignup(signupData);
   }
   return (
-    <section className="min-h-screen items-center p-4 flex gap-10 md:flex-row flex-col">
+    <section className="min-h-screen w-screen items-center p-4 flex gap-10 md:flex-row flex-col">
       <div className="md:block hidden">
         <AuthImage />
       </div>
-      <form className="space-y-5 mx-auto" onSubmit={handleSubmit}>
+      <form className="space-y-5 mx-auto w-full" onSubmit={handleSubmit}>
         <Logo />
         <span className="md:hidden block">
           <AuthImage />
@@ -67,7 +68,7 @@ export default function SignupPage() {
         {
           [
             <>
-              <h1 className="text-xl font-semibold italic text-stone-600/70">
+              <h1 className="text-lg/tight font-semibold italic text-stone-600/70">
                 {"Let's"} sign you up for your journey...
               </h1>
               <div className="flex flex-col gap-4">
@@ -78,14 +79,16 @@ export default function SignupPage() {
                   type="email"
                   {...handleValueChange("email")}
                 />
-                <span className="flex gap-2">
+                <span className="flex gap-2 flex-col md:flex-row">
                   <AuthInput
                     name="firstname"
                     id="firstname"
+                    required
                     {...handleValueChange("firstname")}
                   />
                   <AuthInput
                     name="lastname"
+                    required
                     id="lastname"
                     {...handleValueChange("lastname")}
                   />
@@ -154,20 +157,27 @@ export default function SignupPage() {
         }
 
         <i className="text-red-500 text-2xl">{}</i>
-        <span className="flex gap-2 w-full justify-between">
+        <span className="flex gap-2 w-full justify-between flex-wrap text-base">
           <button
             type="button"
-            className="p-2 text-stone-600 flex items-center gap-3 py-4  text-lg rounded-2xl px-5 disabled:opacity-40 hover:bg-blue-100 hover:text-stone-800"
+            className="p-2 text-stone-600 flex items-center gap-3 py-4   rounded-2xl px-5 disabled:opacity-40 hover:bg-blue-100 hover:text-stone-800"
             disabled={page === 0}
             onClick={() => handleTogglePage(-1)}
           >
-            <BiLeftArrow /> previous
+            <BiLeftArrow /> Back
           </button>
           <button
             type="submit"
-            className="p-2 text-white bg-blue-700 flex py-4  items-center gap-3 text-lg rounded-2xl px-5 "
+            className="p-2 text-white bg-blue-700 flex py-4  items-center gap-3  rounded-2xl px-5 "
           >
-            {isMaxPageIndx ? "Complete Signup" : "Next"}
+            {isMaxPageIndx ? (
+              <>
+                <Check />
+                Complete Signup
+              </>
+            ) : (
+              "Next"
+            )}
             {isMaxPageIndx || <BiRightArrow />}
           </button>
         </span>

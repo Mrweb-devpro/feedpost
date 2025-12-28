@@ -26,7 +26,7 @@ export function useSignupData(errorCallback?: () => void) {
     onSuccess(data) {
       if (data.success) {
         Swal.fire({
-          icon: "error",
+          icon: "success",
           title: "Signup Was Successful",
           text: "Wait while we redirect you to your dashboard...",
           confirmButtonColor: "oklch(54.6% 0.245 262.881)",

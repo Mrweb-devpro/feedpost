@@ -18,15 +18,35 @@ const initialData: SignupPayloadType = {
   terms: false,
 };
 
-export function useSignupData() {
+export function useSignupData(errorCallback?: () => void) {
   const [signupData, setSignupData] = useState<SignupPayloadType>(initialData);
 
   const { mutate, error, isPending } = useMutation({
     mutationFn: signupAction,
     onSuccess(data) {
-      console.log(data);
+      if (data.success) {
+        Swal.fire({
+          icon: "error",
+          title: "Signup Was Successful",
+          text: "Wait while we redirect you to your dashboard...",
+          confirmButtonColor: "oklch(54.6% 0.245 262.881)",
+        });
+      }
     },
-    onError(error: { message: string }) {
+    onError(error: { message: string } & { errors: { message: string }[] }) {
+      if (error?.errors) {
+        const html = error.errors
+          .map((err) => `<li>⚠ ${err.message}</li>`)
+          .join("");
+
+        errorCallback?.();
+        return Swal.fire({
+          icon: "error",
+          title: "Invalid input",
+          html: `<ul style="text-align:center;color:red;">${html}</ul>`,
+        });
+      }
+
       Swal.fire({
         icon: "error",
         title: "Signup failed",

@@ -24,15 +24,11 @@ import {
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 
 export default function SignupPage() {
-  const {
-    mutateSignup,
-    signupData,
-    handleValueChange,
-    handleInterestChange,
-    error,
-    isPending,
-  } = useSignupData();
   const [page, setPage] = useState(0);
+  const { mutateSignup, signupData, handleValueChange, handleInterestChange } =
+    useSignupData(() => {
+      setPage(0);
+    });
   const isMaxPageIndx = page === 1;
 
   const handleTogglePage = (lv: 1 | -1) => {
@@ -42,12 +38,12 @@ export default function SignupPage() {
     setPage((prev) => prev + lv);
   };
   const interestFields = [
-    { value: "Social Media", Icon: Hash },
+    { value: "Socia Media", Icon: Hash },
     { value: "Messaging", Icon: MessageCircleWarning },
-    { value: "Entertainment", Icon: Music },
-    { value: "Finance", Icon: HandCoins },
-    { value: "Productivity", Icon: Rocket },
     { value: "Health", Icon: HeartPulse },
+    { value: "Finance", Icon: HandCoins },
+    { value: "Entertainment", Icon: Music },
+    { value: "Productivity", Icon: Rocket },
     { value: "Others", Icon: Ellipsis },
   ];
 
@@ -59,16 +55,21 @@ export default function SignupPage() {
     mutateSignup(signupData);
   }
   return (
-    <section className="min-h-screen items-center p-4 flex gap-10">
-      <AuthImage />
+    <section className="min-h-screen items-center p-4 flex gap-10 md:flex-row flex-col">
+      <div className="md:block hidden">
+        <AuthImage />
+      </div>
       <form className="space-y-5 mx-auto" onSubmit={handleSubmit}>
         <Logo />
-        <h1 className="text-xl font-semibold italic text-stone-600/70">
-          Signing you up for your journey...
-        </h1>
+        <span className="md:hidden block">
+          <AuthImage />
+        </span>
         {
           [
             <>
+              <h1 className="text-xl font-semibold italic text-stone-600/70">
+                {"Let's"} sign you up for your journey...
+              </h1>
               <div className="flex flex-col gap-4">
                 <AuthInput
                   name="email"
@@ -105,11 +106,11 @@ export default function SignupPage() {
               </div>
             </>,
             <>
-              <h2 className="text-blue-600 font-bold text-lg">
+              <h2 className="text-stone-600/80 font-bold text-lg">
                 Select your interests
               </h2>
 
-              <div className="flex flex-wrap  items-center justify-center gap-2">
+              <div className="w-full flex flex-wrap items-center justify-center gap-2">
                 {interestFields.map((interest, i) => (
                   <InterestButtonField
                     key={i}
@@ -120,8 +121,8 @@ export default function SignupPage() {
                   />
                 ))}
               </div>
-
-              <label className="flex items-start gap-2 text-sm">
+              <br />
+              <label className="flex items-start gap-2 text-sm md:justify-start justify-center">
                 <input
                   type="checkbox"
                   required
@@ -147,6 +148,7 @@ export default function SignupPage() {
                   ?
                 </span>
               </label>
+              <br />
             </>,
           ][page]
         }
@@ -164,7 +166,6 @@ export default function SignupPage() {
           <button
             type="submit"
             className="p-2 text-white bg-blue-700 flex py-4  items-center gap-3 text-lg rounded-2xl px-5 "
-            // onClick={() => handleTogglePage(1)}
           >
             {isMaxPageIndx ? "Complete Signup" : "Next"}
             {isMaxPageIndx || <BiRightArrow />}

@@ -24,15 +24,20 @@ export const SignupSchema = z.object({
 
   interests: z
     .array(
-      z.enum([
-        "SOCIAL_MEDIA",
-        "MESSAGING",
-        "ENTERTAINMENT",
-        "PRODUCTIVITY",
-        "FINANCE",
-        "HEALTH",
-        "OTHERS",
-      ]),
+      z.enum(
+        [
+          "SOCIAL_MEDIA",
+          "MESSAGING",
+          "ENTERTAINMENT",
+          "PRODUCTIVITY",
+          "FINANCE",
+          "HEALTH",
+          "OTHERS",
+        ],
+        {
+          error: "An invalid interest was found in the interest list",
+        }
+      ),
       {
         error: "Interests field is required",
       }

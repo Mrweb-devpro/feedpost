@@ -17,7 +17,7 @@ export class authControllers {
   //-- oauth login
 
   //-- signup
-  signup = asyncWrapper(async (req, res) => {
+  signup = asyncWrapper(async (req, res, next) => {
     const body = req.body;
     const result = await this.authService.signup(body);
 

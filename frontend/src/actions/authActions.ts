@@ -26,7 +26,6 @@ export async function loginAction(data: LoginPayloadType) {
     console.log(res.data);
 
     const resData = res.data;
-    console.log(res.status, resData);
 
     return resData;
   } catch (err) {

@@ -2,10 +2,24 @@
 import { useLogin } from "@/hooks/useLogin";
 import AuthImage from "../AuthImage";
 import AuthInput from "../inputs/AuthInput";
-import { FormEventHandler } from "react";
+import { FormEventHandler, useState } from "react";
+import LoadingOverlay from "../LoadingOverlay";
+import LoadingTips from "../LoadingTips";
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-  const { mutateLogin } = useLogin();
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { mutate: mutateLogin, isPending } = useLogin(() => {
+    setIsLoading(true);
+
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+      clearTimeout(timeoutId);
+      router.push("/");
+    }, 5000);
+  });
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
@@ -21,6 +35,12 @@ export default function LoginForm() {
       className="flex flex-col md:flex-row gap-4 items-center"
       onSubmit={handleSubmit}
     >
+      {(isPending || isLoading) && (
+        <LoadingOverlay>
+          <LoadingTips />
+        </LoadingOverlay>
+      )}
+
       <span>
         <AuthImage />
       </span>

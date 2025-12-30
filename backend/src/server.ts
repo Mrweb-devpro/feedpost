@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 dotenv.config();
 // import routes
 import authRoutes from "./modules/auth/auth.routes";
+import oauthRoutes from "./modules/auth/oauth.routes";
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.use(cookieParser());
 
 //-- Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/oauth", oauthRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hi this is the api base endpoint for FEEDPOST");

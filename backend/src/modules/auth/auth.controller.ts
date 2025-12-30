@@ -1,5 +1,4 @@
 import { config } from "../../config/env.config";
-import { AppError } from "../../middlewares/errorhandler.middleware";
 import { ApiResponse } from "../../types";
 import { asyncWrapper } from "../../utils/asyncWrappers.util";
 import { authService } from "./auth.service";
@@ -19,15 +18,27 @@ export class authControllers {
   //-- signup
   signup = asyncWrapper(async (req, res, next) => {
     const body = req.body;
-    const result = await this.authService.signup(body);
+    const signupResult = await this.authService.signup(body);
+    const loginResult = await this.authService.login({
+      email: signupResult.data.email,
+      password: body.password,
+    });
 
     const response: ApiResponse = {
       success: true,
-      message: result.message,
-      data: result,
+      message: signupResult.message,
+      data: loginResult,
     };
 
-    res.status(201).json(response);
+    res
+      .cookie("jwt", loginResult.refreshToken, {
+        httpOnly: true,
+        sameSite: "strict",
+        secure: config.node_Env === "production",
+        maxAge: config.jwt.max_age,
+      })
+      .status(201)
+      .json(response);
   });
 
   //--login
@@ -41,6 +52,7 @@ export class authControllers {
       token: result.accessToken,
       data: result.data,
     };
+
     res
       .cookie("jwt", result.refreshToken, {
         httpOnly: true,

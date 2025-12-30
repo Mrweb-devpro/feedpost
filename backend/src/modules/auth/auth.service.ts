@@ -20,7 +20,6 @@ export class authService {
     }
   ) {
     const secret = config.jwt[`${type}_secret`] as string;
-
     return jwt.sign({ email, id, role }, secret, {
       expiresIn: config.jwt[`${type}_ExpIn`],
     } as SignOptions);
@@ -89,7 +88,7 @@ export class authService {
       data: user,
     };
   }
-
+  //-- login service
   async login(data: LoginDataType) {
     const { email, password } = data;
 
@@ -101,12 +100,18 @@ export class authService {
     const foundUser = await prisma.authUser.findUnique({
       where: { email },
       include: { user: true },
+      omit: {
+        provider: true,
+        providerId: true,
+        refreshToken: true,
+      },
     });
+
     if (!foundUser)
       throw new AppError(404, "No account with this email was found");
 
     // check password is correct
-    if (await bcrypt.compare(password, foundUser.password as string))
+    if (!(await bcrypt.compare(password, foundUser.password as string)))
       throw new AppError(401, "Invalid credentials");
 
     // generate needed tokens
@@ -121,10 +126,12 @@ export class authService {
       },
     });
 
+    const { password: pwdHash, ...userData } = foundUser;
+
     return {
       accessToken,
       refreshToken,
-      data: foundUser,
+      data: userData,
       message: "✅Login Successful",
     };
   }

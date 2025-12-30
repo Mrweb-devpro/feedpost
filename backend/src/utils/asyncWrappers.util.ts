@@ -12,6 +12,7 @@ export function asyncWrapper(fn: AsyncWrapperType): AsyncWrapperType {
     try {
       await fn(req, res, next);
     } catch (error) {
+      console.log(error);
       if (error instanceof AppError) {
         res
           .status(error.statusCode)

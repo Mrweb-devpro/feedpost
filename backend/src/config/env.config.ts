@@ -1,4 +1,7 @@
 //
+import dotenv from "dotenv";
+dotenv.config();
+
 const config = {
   node_Env: process.env.NODE_ENV,
   jwt: {
